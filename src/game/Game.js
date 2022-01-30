@@ -1,5 +1,3 @@
-
-
 function init() {
   for (let i = 0; i < count + 1; i++) {
     particles.push({
@@ -62,5 +60,34 @@ window.onload = () => {
   init();
 };
 function startGame() {
-  
+  gcanv.style.display = 'none';
+  container.style.display = 'none';
+
+  game.style.display = "inline-block";
+  // fadeDiv.removeChild(div);
+  setInterval(gameLoop, 10);
+}
+function gameLoop() {
+  // draw background
+  ctx.clearRect(0, 0, width, height);
+  ctx.fillStyle = 'rgba(90, 90, 90, 0.6)';
+  ctx.fillRect(0, 0, width, height);
+  // draw grid
+  ctx.beginPath();
+  ctx.strokeStyle = 'rgba(95, 95, 95, 0.9)';
+  for (let xOff = 0; xOff < width; xOff += 70) {
+    ctx.moveTo(xOff, 0);
+    ctx.lineTo(xOff, height);
+    ctx.stroke();
+  }
+  for (let yOff = 0; yOff < height; yOff += 70) {
+    ctx.moveTo(0, yOff);
+    ctx.lineTo(width, yOff);
+    ctx.stroke();
+  }
+  ctx.stroke();
+
+  // player update 
+  player.update();
+
 }
