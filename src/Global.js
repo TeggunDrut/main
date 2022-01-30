@@ -41,7 +41,7 @@ let keyState = {
 let player = {
   x: 0,
   y: 0,
-  speed: 1,
+  speed: 8,
   xVel: 1,
   yVel: 1,
   width: 35,
@@ -62,30 +62,18 @@ let player = {
       this.y = height - this.height;
     }
 
+    if (keyState.d) {
+      this.x += this.speed;
+    }
     if (keyState.a) {
       this.x -= this.speed;
-    } else if (keyState.d) {
-      this.x += this.speed;
     }
     if (keyState.w) {
       this.y -= this.speed;
     } else if (keyState.s) {
       this.y += this.speed;
     }
-
-    if (this.heldGun == "pistol") {
-      let offsetx = mouseX - this.x;
-      let offsety = mouseY - this.y; // radians
-      let angle = Math.atan2(offsetx, offsety);
-      
-      ctx.beginPath();
-      ctx.strokeStyle = "rgb(40, 40, 40)";
-      ctx.lineWidth = 4;
-      ctx.moveTo(this.x + this.width / 2, this.y + this.height / 2);
-      ctx.lineTo(angle, angle);
-      ctx.stroke();
-    }
-  },
+  }
 };
 
 let fadeDiv = document.getElementById("fadeDiv");
