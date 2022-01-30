@@ -91,4 +91,8 @@ function gameLoop() {
   // player update 
   player.update();
 
+  enemyList.forEach(e => {
+    e.update();
+  })
+  
 }

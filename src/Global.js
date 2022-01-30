@@ -19,6 +19,8 @@ game.setAttribute("style", "display: none;");
 document.body.appendChild(game);
 const ctx = game.getContext("2d");
 
+let enemyList = [];
+
 // events
 document.addEventListener("keydown", (e) => {
   keyState[e.key] = true;
@@ -73,9 +75,11 @@ let player = {
     } else if (keyState.s) {
       this.y += this.speed;
     }
-  }
+  },
 };
 
+let enemy = new Enemy(game.width / 2, game.height / 2, 60, "blue", 200, true, 5);
+enemyList.push(enemy);
 let fadeDiv = document.getElementById("fadeDiv");
 let div = document.createElement("div");
 
